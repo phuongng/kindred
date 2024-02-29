@@ -1,0 +1,36 @@
+.timepicker select{
+    border: none;  
+    padding: 0 3px;   
+    outline: none; 
+    
+}
+
+.timepicker{
+    /* border: 1px solid #8FC1E3; */
+    border-radius: 5px;
+    padding: 10px;
+    background-color: rgb(143, 193, 227, 0.5); 
+    display: inline-block;
+    display: flex;
+    align-items: center;
+}
+
+
+.select-no-arrow {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;   
+    background-color: rgb(143, 193, 227, 0.05); 
+    border: none;
+    color: #31708E;
+    font-weight: bold;
+}
+
+
+.clock{
+    color: #31708E;
+    margin: 0 3px;
+    display: flex;
+    align-items: center;
+  
+}

@@ -1,0 +1,107 @@
+.caregiver-profile{
+    height: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 40px;
+    background-color: #F7F9FB;
+    
+}
+
+.caregiver-profile h3, p{
+    margin: 0;
+}
+.caregiver-profile-1{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    /* background-color: aliceblue; */
+    padding: 25px;
+}
+
+.caregiverProfile-image-container{
+   display: flex;
+  align-items: center;
+  justify-content: start;  
+  width: fit-content;
+  height: fit-content;
+}
+
+
+.caregiverProfile-image{
+    background-color: #687864;
+    border-radius: 40%;
+    height: 100px;
+    width: 100px;  
+}
+.caregiver-name{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    padding: 10px;
+    margin: 0;
+}
+
+
+.giver-name{
+    font-weight: bold;
+    color: black;
+}
+.giver-title{
+    color: gray;
+    font-size: 14px;
+
+}
+.caregiver-name span{
+    font-size: 14px;
+}
+.caregiver-profile-2{
+    padding: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.caregiver-profile-2-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 120px;
+
+}
+
+.profile-2-icon{
+    height: 25px;
+    width: 25px;
+    color:  #687864;
+    padding: 10px;
+}
+
+.profile-2-icon-container{
+    background-color: #F7F9FB;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+
+.caregiver-profile-2-container p{
+    margin: 0;
+}
+.caregiver-profile-3{
+    text-align: left;
+    padding: 25px;
+}
+
+
+.caregiver-profile-3  p{
+    margin-top: 15px;
+}
+.caregiver-profile-4{
+    text-align: left;
+    padding: 25px;
+
+}
+

@@ -1,0 +1,277 @@
+[
+    {
+        "fullname": "Mary Brown",
+        "email": "mary@example.com",
+        "password": "hashedpassword",
+        "DOB": "1980-06-15",
+        "zipcode": "21201",
+        "role": "caregiver",
+        "caregiver": {
+            "caregiver_name": "Mary Brown",
+            "contact": "mary@example.com",
+            "hourly_rate": 25.0,
+            "location": "21201",
+            "year_experience": 6,
+            "title": [
+                "CPR Certification"
+            ],
+            "rating": 4.7,
+            "reviews": 10,
+            "skills": [
+                "Nutritional Counseling: $25.00",
+                "Personal Care Assistance: $25.00",
+                "Mobility Aid: $25.00",
+                "Errands: $25.00"
+            ],
+            "appointments": [
+                {
+                    "user_fullname": "John Doe",
+                    "contact": "john@example.com",
+                    "dayOfWeek": "Monday",
+                    "day": 1,
+                    "month": "March",
+                    "year": 2024,
+                    "start_time": "10:00",
+                    "total": 50.00,
+                    "price_breakdown": [
+                        "Wound Care Management: $25.00",
+                        "Nutritional Counseling: $25.00"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "fullname": "John Davis",
+        "email": "john@example.com",
+        "password": "hashedpassword",
+        "DOB": "1975-08-20",
+        "zipcode": "20877",
+        "role": "caregiver",
+        "caregiver": {
+            "caregiver_name": "John Davis",
+            "contact": "john@example.com",
+            "hourly_rate": 30.0,
+            "location": "20877",
+            "year_experience": 8,
+            "title": [
+                "Nursing License",
+                "CPR Certification"
+            ],
+            "rating": 4.9,
+            "reviews": 15,
+            "skills": [
+                "Wound Care Management: $30.00",
+                "Chronic Disease Management: $30.00",
+                "Physical Therapy: $30.00",
+                "Medication Management: $30.00",
+                "Emotional Support: $30.00"
+            ],
+            "appointments": [
+                {
+                    "user_fullname": "Jane Smith",
+                    "contact": "jane@example.com",
+                    "dayOfWeek": "Wednesday",
+                    "day": 3,
+                    "month": "March",
+                    "year": 2024,
+                    "start_time": "14:30",
+                    "total": 60.00,
+                    "price_breakdown": [
+                        "Physical Therapy: $30.00",
+                        "Personal Care Assistance: $30.00"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "fullname": "Jennifer Smith",
+        "email": "jennifer@example.com",
+        "password": "hashedpassword",
+        "DOB": "1983-04-05",
+        "zipcode": "21044",
+        "role": "caregiver",
+        "caregiver": {
+            "caregiver_name": "Jennifer Smith",
+            "contact": "jennifer@example.com",
+            "hourly_rate": 27.0,
+            "location": "21044",
+            "year_experience": 7,
+            "title": [
+                "Nursing License"
+            ],
+            "rating": 4.8,
+            "reviews": 12,
+            "skills": [
+                "Chronic Disease Management: $27.00",
+                "Rehabilitation Services: $27.00",
+                "Physical Therapy: $27.00",
+                "Medication Management: $27.00",
+                "Emotional Support: $27.00"
+            ],
+            "appointments": [
+                {
+                    "user_fullname": "Emily Wilson",
+                    "contact": "emily@example.com",
+                    "dayOfWeek": "Thursday",
+                    "day": 4,
+                    "month": "March",
+                    "year": 2024,
+                    "start_time": "13:00",
+                    "total": 65.00,
+                    "price_breakdown": [
+                        "Chronic Disease Management: $27.00",
+                        "Physical Therapy: $28.00"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "fullname": "Michael Johnson",
+        "email": "michael@example.com",
+        "password": "hashedpassword",
+        "DOB": "1979-12-10",
+        "zipcode": "20705",
+        "role": "caregiver",
+        "caregiver": {
+            "caregiver_ID": "4",
+            "caregiver_name": "Michael Johnson",
+            "contact": "michael@example.com",
+            "hourly_rate": 28.0,
+            "location": "20705",
+            "year_experience": 9,
+            "title": [
+                "CPR Certification"
+            ],
+            "rating": 4.6,
+            "reviews": 11,
+            "skills": [
+                "Nutritional Counseling: $28.00",
+                "Rehabilitation Services: $28.00",
+                "Respiratory Therapy: $28.00",
+                "Personal Care Assistance: $28.00",
+                "Mobility Aid: $28.00"
+            ],
+            "appointments": [
+                {
+                    "user_fullname": "Jane Smith",
+                    "contact": "jane@example.com",
+                    "dayOfWeek": "Tuesday",
+                    "day": 2,
+                    "month": "March",
+                    "year": 2024,
+                    "start_time": "11:00",
+                    "total": 55.00,
+                    "price_breakdown": [
+                        "Respiratory Therapy: $28.00",
+                        "Personal Care Assistance: $27.00"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "fullname": "Patricia Martinez",
+        "email": "patricia@example.com",
+        "password": "hashedpassword",
+        "DOB": "1981-11-12",
+        "zipcode": "21093",
+        "role": "caregiver",
+        "caregiver": {
+            "caregiver_ID": "8",
+            "caregiver_name": "Patricia Martinez",
+            "contact": "patricia@example.com",
+            "hourly_rate": 27.0,
+            "location": "21093",
+            "year_experience": 7,
+            "title": [
+                "CPR Certification"
+            ],
+            "rating": 4.7,
+            "reviews": 16,
+            "skills": [
+                "Respiratory Therapy: $27.00",
+                "Personal Care Assistance: $27.00",
+                "Mobility Aid: $27.00",
+                "Errands: $27.00",
+                "Medication Management: $27.00"
+            ],
+            "appointments": [
+                {
+                    "user_fullname": "Emma Thomas",
+                    "contact": "emma@example.com",
+                    "dayOfWeek": "Sunday",
+                    "day": 7,
+                    "month": "March",
+                    "year": 2024,
+                    "start_time": "16:00",
+                    "total": 55.00,
+                    "price_breakdown": [
+                        "Respiratory Therapy: $27.00",
+                        "Personal Care Assistance: $28.00"
+                    ]
+                },
+                {
+                    "user_fullname": "Emma Thomas",
+                    "contact": "emma@example.com",
+                    "dayOfWeek": "Sunday",
+                    "day": 7,
+                    "month": "March",
+                    "year": 2024,
+                    "start_time": "16:00",
+                    "total": 55.00,
+                    "price_breakdown": [
+                        "Respiratory Therapy: $27.00",
+                        "Personal Care Assistance: $28.00"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "fullname": "Richard Taylor",
+        "email": "richard@example.com",
+        "password": "hashedpassword",
+        "DOB": "1984-09-29",
+        "zipcode": "20904",
+        "role": "caregiver",
+        "caregiver": {
+            "caregiver_ID": "9",
+            "caregiver_name": "Richard Taylor",
+            "contact": "richard@example.com",
+            "hourly_rate": 28.0,
+            "location": "20904",
+            "year_experience": 9,
+            "title": [
+                "Nursing License"
+            ],
+            "rating": 4.8,
+            "reviews": 14,
+            "skills": [
+                "Wound Care Management: $28.00",
+                "Nutritional Counseling: $28.00",
+                "Chronic Disease Management: $28.00",
+                "Rehabilitation Services: $28.00",
+                "Physical Therapy: $28.00"
+            ],
+            "appointments": [
+                {
+                    "user_fullname": "Emma Thomas",
+                    "contact": "emma@example.com",
+                    "dayOfWeek": "Sunday",
+                    "day": 7,
+                    "month": "March",
+                    "year": 2024,
+                    "start_time": "16:00",
+                    "total": 55.00,
+                    "price_breakdown": [
+                        "Rehabilitation Services: $28.00",
+                        "Physical Therapy: $28.00"
+                    ]
+                }
+            ]
+        }
+    }
+]

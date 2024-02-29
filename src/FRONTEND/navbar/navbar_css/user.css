@@ -1,0 +1,60 @@
+.user-dashboard{
+    height: 100vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: #F7F9FB;
+    padding-bottom: 40px;
+}
+
+.upcoming-appointment{
+    background-color: white;
+    padding: 20px;
+    margin: 25px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.upcoming-appointment-right a{
+    color: #31708E;
+    font-size: 14px;
+}
+
+.upcoming-appointment-right img{
+    background-color: #31708E;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    position: relative;
+    top: -50px;
+}
+
+.edit-account-button{
+    margin: 0 25px;
+    width: calc(100% - 50px);
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;  
+}
+
+.addtional-question{
+    text-align: left;
+    padding: 25px;
+}
+
+.message-icon-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    justify-content: end;
+}
+
+.message-icon{
+    color:  #31708E;
+    height: 15px;
+    width: 15px;
+
+}

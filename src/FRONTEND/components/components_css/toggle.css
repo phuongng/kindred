@@ -1,0 +1,46 @@
+.toggle-container {
+    display: flex;
+    align-items: center;
+  }
+  
+.toggle {
+    width: 50px;
+    height: 16px;
+    background-color: white;
+    border: 1px solid #8FC1E3;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    padding: 2px;
+    cursor: pointer;
+  }
+  
+.toggle.active {
+    background-color: #8FC1E3;
+    
+  }
+  
+.circle {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #8FC1E3;
+    transition: transform 0.3s ease;
+  }
+  
+.toggle.active .circle {
+    transform: translateX(10px); /* Adjust based on toggle width */
+    background-color: white;
+  }
+  
+.toggle-label {
+    font-size: 13px;
+    margin-left: 12px;
+  }
+ 
+.toggle.active .toggle-label.Yes {
+  margin-left: 3px;
+  margin-right: 0px;
+  order: -1;
+  }
+

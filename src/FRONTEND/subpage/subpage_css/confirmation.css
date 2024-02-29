@@ -1,0 +1,38 @@
+.confirmation{ 
+    height: 100vh;
+    overflow-y: auto;
+    padding-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    background-color: #F7F9FB;
+}
+
+.confirmation-message{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 0 25px;
+    padding-top: 60px;
+}
+
+.return-home a {
+    color: #31708E;
+    text-decoration: underline;
+}
+
+.message-to-giver{
+    text-align: left;
+    margin: 25px;
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+
+}
+
+.message-box{
+    width: calc(100% - 25px);
+    height: 100px;
+}
+

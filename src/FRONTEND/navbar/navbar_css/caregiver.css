@@ -1,0 +1,122 @@
+.caregiver{
+    height: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: #F7F9FB;
+    padding-bottom: 40px;
+}
+
+
+.notification {
+    background-color: #687864;
+    border-radius: 0 0 20px 20px;
+    height: 100px;
+    padding: 0 25px;
+    padding-top: 25px;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.small-profile-image{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+}
+.welcome-user{
+    text-align: left;
+    font-size: 14px;
+}
+
+.welcome-user p{
+    margin: 2px 0;  
+}
+
+.nofi-icon{
+    width: 25px;
+    height: 25px;
+    padding: 3px;
+    border: 0.5px solid white;
+    border-radius: 10px;
+}
+
+.caregiver-selection{
+    padding-top: 25px;
+}
+
+.sort-container{
+    display: flex;
+    flex-direction: row;
+    padding-left: 25px;
+    /* padding-top: 20px; */
+}
+
+.caregiver-info{
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; 
+}
+
+.caregiver-list{
+    width: calc(50% - 20px); /* Set the width of each item, considering margins */
+    margin: 10px;
+    background-color: white;
+    border-radius: 15px;
+    display:flex;
+    flex-direction: column;
+    
+}
+
+.caregiver-list img{
+    background-color: #687864;
+    border-radius: 15px 15px 0 0;
+    height: 60px;
+
+}
+.caregiver-name-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+    font-size: 12px;
+    margin: 10px 0;
+}
+
+
+.caregiver-price-container{
+    text-align: left;
+    padding: 0 15px;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.sorting-button{
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid #8FC1E3;
+    padding: 3px 7px;
+    margin-left: 5px;
+}
+.sorting-button:active{
+    background-color: #8FC1E3;
+}
+
+.highlight {
+    font-weight: bold;
+    background-color: #8FC1E3;
+    width: fit-content;
+    border-radius: 20px;
+  }
+.rating-highlight{
+    padding: 2px 7px;
+    border-radius: 10px;
+    background-color: #8FC1E3;
+    font-weight: bold;
+}  
+

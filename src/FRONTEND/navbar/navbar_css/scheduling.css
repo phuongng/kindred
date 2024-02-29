@@ -1,0 +1,89 @@
+.scheduling{
+    height: 100vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: #F7F9FB;
+    padding-bottom: 40px;
+}
+
+
+.dashboard-notification{
+    background-color: #687864;
+    border-radius: 0 0 20px 20px;
+    height: 100px;
+    padding: 0 25px;
+    padding-top: 25px;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+   
+}
+
+.small-profile-image{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+}
+.welcome-user{
+    text-align: left;
+    font-size: 14px;
+}
+
+.welcome-user p{
+    margin: 2px 0;  
+}
+
+.nofi-icon{
+    width: 25px;
+    height: 25px;
+    padding: 3px;
+    border: 0.5px solid white;
+    border-radius: 10px;
+    
+}
+
+.date-selection{
+    background-color: #F7F9FB; 
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+.date-selection h3{
+    color:#31708E;
+    text-align: left;
+    padding-left: 25px;
+}
+
+.calendar{
+    padding: 0 25px;
+}
+
+.repeat-schedule{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+
+}
+.repeat-schedule p{
+    font-size: 12px;
+}
+
+
+.time-selection{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0px 25px;
+}
+.time-selection p{
+    text-align: left;
+    font-size: 14px;
+    margin: 10px 0;
+}
+
+

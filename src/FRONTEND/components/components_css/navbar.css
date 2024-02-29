@@ -1,0 +1,32 @@
+.navbar{
+    background-color: #F7F9FB;
+    border-top: 0.5px solid #687864;
+    height: 45px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+   
+}
+
+.navbar NavLink{
+    text-decoration: none;
+    
+}
+
+.menu-icon{
+    color: #687864;
+    height: 25px;
+    width: 25px;
+}
+
+.home-icon{
+    height: 30px;
+    width: 30px;
+
+}
