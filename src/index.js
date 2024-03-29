@@ -29,3 +29,20 @@ app.get("/api/caregiver", async (req, res) => {
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+// imports
+// const express = require('express');
+// const mongoose = require('mongoose');
+
+// const app = express();
+// const PORT = process.env.PORT || 3000;
+
+// // database connection
+// mongoose.connect('mongodb+srv://cosc617:admin@kindredapp.s34qhh0.mongodb.net/');
+// const db = mongoose.connection;
+// db.on("error", (error) => console.log(error));
+// db.once("open", () => console.log("Connected to the database!"));
+
+// app.listen(PORT, () => {
+//     console.log(`App up at http://localhost:${PORT}`);
+// });
