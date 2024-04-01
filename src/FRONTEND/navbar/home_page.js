@@ -46,17 +46,17 @@ function Home() {
 
 				<div className="service-list">
 				<p className={activeOptions.includes('option5') ? 'active' : ''} onClick={() => handleClick('option5')}>Catheter Care</p>
-				<p className={activeOptions.includes('option3') ? 'active' : ''} onClick={() => handleClick('option9')}>Chronic Disease Management</p>
+				<p className={activeOptions.includes('option9') ? 'active' : ''} onClick={() => handleClick('option9')}>Chronic Disease Management</p>
 				<p className={activeOptions.includes('option3') ? 'active' : ''} onClick={() => handleClick('option3')}>Errands</p>
 				<p className={activeOptions.includes('option6') ? 'active' : ''} onClick={() => handleClick('option6')}>Emotional Support</p>
 				<p className={activeOptions.includes('option4') ? 'active' : ''} onClick={() => handleClick('option4')}>Medication Management</p>
 				<p className={activeOptions.includes('option2') ? 'active' : ''} onClick={() => handleClick('option2')}>Mobility Aid</p>
-				<p className={activeOptions.includes('option2') ? 'active' : ''} onClick={() => handleClick('option8')}>Nutritional Counseling</p>
+				<p className={activeOptions.includes('option8') ? 'active' : ''} onClick={() => handleClick('option8')}>Nutritional Counseling</p>
 				<p className={activeOptions.includes('option1') ? 'active' : ''} onClick={() => handleClick('option1')}>Perconal Care Assistance</p>
-				<p className={activeOptions.includes('option5') ? 'active' : ''} onClick={() => handleClick('option11')}>Physical Therapy</p>
-				<p className={activeOptions.includes('option4') ? 'active' : ''} onClick={() => handleClick('option10')}>Rehabilitation Services</p>
-				<p className={activeOptions.includes('option6') ? 'active' : ''} onClick={() => handleClick('option12')}>Respiratory Therapy</p>
-				<p className={activeOptions.includes('option1') ? 'active' : ''} onClick={() => handleClick('option7')}>Wound Care Management</p>
+				<p className={activeOptions.includes('option11') ? 'active' : ''} onClick={() => handleClick('option11')}>Physical Therapy</p>
+				<p className={activeOptions.includes('option10') ? 'active' : ''} onClick={() => handleClick('option10')}>Rehabilitation Services</p>
+				<p className={activeOptions.includes('option12') ? 'active' : ''} onClick={() => handleClick('option12')}>Respiratory Therapy</p>
+				<p className={activeOptions.includes('option7') ? 'active' : ''} onClick={() => handleClick('option7')}>Wound Care Management</p>
 				</div>
 				
 			<label className="light-text">Other, specify and select from list</label>
