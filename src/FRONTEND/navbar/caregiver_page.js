@@ -1,21 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./navbar_css/caregiver.css";
 import Navbar from "../components/navbar";
 import { MdNotificationsNone } from "react-icons/md";
 import { FaStar } from "react-icons/fa";
 
 function Caregiver() {
-  const [caregivers, setCaregivers] = useState([
-    { name: "Adelina", price: 18.75, rating: 4.8 },
-    { name: "Adel", price: 16.75, rating: 1.5 },
-    { name: "Lina", price: 17.75, rating: 3.2 },
-    { name: "Ina", price: 19.75, rating: 2.9 },
-    { name: "Delina", price: 19.75, rating: 4.2 }
-  ]);
+  const [caregivers, setCaregivers] = useState([]);
   const [sortType, setSortType] = useState('price');
   const [sortOrder, setSortOrder] = useState('asc');
   const [activeSortButton, setActiveSortButton] = useState(null);
   const [sortInfo, setSortInfo] = useState('');
+
+  useEffect(() => {
+    // Fetch the caregivers from your API
+    axios.get("http://localhost:5000/api/caregiver")
+      .then(response => setCaregivers(response.data))
+      .catch(error => console.error(error));
+  }, []);
 
   const sortBy = (type) => {
     let info = '';
@@ -36,9 +38,9 @@ function Caregiver() {
 
   const sortedCaregivers = [...caregivers].sort((a, b) => {
     if (sortType === 'price') {
-      return sortOrder === 'asc' ? a.price - b.price : b.price - a.price;
+      return sortOrder === 'asc' ? a.caregiver.hourly_rate - b.caregiver.hourly_rate : b.caregiver.hourly_rate - a.caregiver.hourly_rate;
     } else if (sortType === 'rating') {
-      return sortOrder === 'asc' ? a.rating - b.rating : b.rating - a.rating;
+      return sortOrder === 'asc' ? a.caregiver.rating - b.caregiver.rating : b.caregiver.rating - a.caregiver.rating;
     }
   });
 
@@ -101,12 +103,12 @@ function Caregiver() {
                 ></img>
 
                 <div className="caregiver-name-container">
-                  <p><b>{caregiver.name}</b></p>
+                  <p><b>{caregiver.fullname}</b></p>
                   <div className={`caregiver-rating-container ${activeSortButton === 'rating' ? 'rating-highlight' : ''}`}>
-                    <FaStar color={getStarColor(caregiver.rating)} /> <span>{`${caregiver.rating} / 5 `}</span> </div>
+                    <FaStar color={getStarColor(caregiver.caregiver.rating)} /> <span>{`${caregiver.caregiver.rating} / 5 `}</span> </div>
                 </div>
                 <div className={`caregiver-price-container ${activeSortButton === 'price' ? 'highlight' : ''}`}>
-                  <p id="price">${caregiver.price} / hour</p>
+                  <p id="price">${caregiver.caregiver.hourly_rate} / hour</p>
                 </div>
               </div>
             ))}
@@ -118,6 +120,37 @@ function Caregiver() {
       </div>
     </>
   );
+
+   return (
+    <>
+      <Navbar />
+      <div className="caregiver">
+        {/* ... (The rest of your components) */}
+        <div className="caregiver-info">
+          {sortedCaregivers.map((caregiver, index) => (
+            <div key={index} className="caregiver-list">
+              <img
+                className="caregiver-image"
+                alt=""
+                src="" // Add path to your images or remove if not using images
+              />
+
+              <div className="caregiver-name-container">
+                <p><b>{caregiver.fullname}</b></p>
+                <div className={`caregiver-rating-container ${sortType === 'rating' ? 'rating-highlight' : ''}`}>
+                  <FaStar color={getStarColor(caregiver.caregiver.rating)} /> <span>{`${caregiver.caregiver.rating} / 5 `}</span> </div>
+              </div>
+              <div className={`caregiver-price-container ${sortType === 'price' ? 'highlight' : ''}`}>
+                <p id="price">${caregiver.caregiver.hourly_rate} / hour</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
+  );
+
+
 }
 
 export default Caregiver;
