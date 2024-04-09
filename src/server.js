@@ -102,3 +102,68 @@ app.post('/api/appointment/new', async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
+// DELETE 
+app.delete('/api/caregiver/delete/:id', async (req, res) => {
+  const caregiverId = req.params.id;
+
+  try {
+    const deletedCaregiver = await Caregiver.findByIdAndDelete(caregiverId);
+    
+    if (!deletedCaregiver) {
+      return res.status(404).json({ message: 'Caregiver not found' });
+    }
+
+    res.status(200).json({ message: 'Caregiver deleted successfully' });
+  } catch (error) {
+    // Handle errors
+    console.error('Error deleting caregiver:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+app.delete('/api/client/delete/:id', async (req, res) => {
+  const clientId = req.params.id;
+
+  try {
+    const deletedClient = await Client.findByIdAndDelete(clientId);
+
+    if (!deletedClient) {
+      return res.status(404).json({ message: 'Client not found' });
+    }
+
+    res.status(200).json({ message: 'Client deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting client:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+app.delete('/api/appointment/delete/:id', async (req, res) => {
+  const appointmentId = req.params.id;
+
+  try {
+    const deletedAppointment = await Appointment.findByIdAndDelete(appointmentId);
+    if (!deletedAppointment) {
+      return res.status(404).json({ message: 'Appointment not found' });
+    }
+
+    res.status(200).json({ message: 'Appointment deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting appointment:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+app.delete('/api/review/delete/:id', async (req, res) => {
+  const reviewId = req.params.id;
+
+  try {
+    const deletedReview = await Review.findByIdAndDelete(reviewId);
+    if (!deletedReview) {
+      return res.status(404).json({ message: 'Review not found' });
+    }
+
+    res.status(200).json({ message: 'Review deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting review:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
