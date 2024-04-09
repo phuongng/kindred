@@ -109,7 +109,7 @@ app.delete('/api/caregiver/delete/:id', async (req, res) => {
 
   try {
     const deletedCaregiver = await Caregiver.findByIdAndDelete(caregiverId);
-    
+
     if (!deletedCaregiver) {
       return res.status(404).json({ message: 'Caregiver not found' });
     }
@@ -164,6 +164,76 @@ app.delete('/api/review/delete/:id', async (req, res) => {
     res.status(200).json({ message: 'Review deleted successfully' });
   } catch (error) {
     console.error('Error deleting review:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// PUT
+app.put('/api/client/update/:id', async (req, res) => {
+  const clientId = req.params.id;
+  const updateData = req.body;
+
+  try {
+    const updatedClient = await Client.findByIdAndUpdate(clientId, updateData, { new: true });
+
+    if (!updatedClient) {
+      return res.status(404).json({ message: 'Client not found' });
+    }
+
+    res.status(200).json(updatedClient);
+  } catch (error) {
+    console.error('Error updating client:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+app.put('/api/appointment/update/:id', async (req, res) => {
+  const appointmentId = req.params.id;
+  const updateData = req.body;
+
+  try {
+    const updatedAppointment = await Appointment.findByIdAndUpdate(appointmentId, updateData, { new: true });
+
+    if (!updatedAppointment) {
+      return res.status(404).json({ message: 'Appointment not found' });
+    }
+
+    res.status(200).json(updatedAppointment);
+  } catch (error) {
+    console.error('Error updating appointment:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+app.put('/api/review/update/:id', async (req, res) => {
+  const reviewId = req.params.id;
+  const updateData = req.body;
+
+  try {
+    const updatedReview = await Review.findByIdAndUpdate(reviewId, updateData, { new: true });
+
+    if (!updatedReview) {
+      return res.status(404).json({ message: 'Review not found' });
+    }
+
+    res.status(200).json(updatedReview);
+  } catch (error) {
+    console.error('Error updating review:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+app.put('/api/caregiver/update/:id', async (req, res) => {
+  const caregiverId = req.params.id;
+  const updateData = req.body;
+
+  try {
+    const updatedCaregiver = await Caregiver.findByIdAndUpdate(caregiverId, updateData, { new: true });
+
+    if (!updatedCaregiver) {
+      return res.status(404).json({ message: 'Caregiver not found' });
+    }
+
+    res.status(200).json(updatedCaregiver);
+  } catch (error) {
+    console.error('Error updating caregiver:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });
