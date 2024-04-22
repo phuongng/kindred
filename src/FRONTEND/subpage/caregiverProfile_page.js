@@ -1,48 +1,62 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from "../components/navbar";
 import { FaStar } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import { FaCalendarCheck } from "react-icons/fa";
 import { RiMessage2Fill } from "react-icons/ri";
 import "../subpage/subpage_css/caregiverProfile.css";
+import api from '../../api.js';
+import { useParams } from 'react-router-dom';
 
 function CaregiverProfile() {
-    const [caregivers, setCaregivers] = useState([
-        { 
-            name: "", 
-            title: "", 
-            rating: 0, 
-            review: 0, 
-            total_patients: 0, 
-            year_experience: 0, 
-            about_me: "", 
-            services_offered: "" 
-        }
-    ]);
-    const [activeOptions, setActiveOptions] = useState([]);
+    const { fullname } = useParams();
+    const [caregiverData, setCaregiverData] = useState(null);
 
-    const handleClick = (id) => {
-        if (activeOptions.includes(id)) {
-            setActiveOptions(activeOptions.filter(option => option !== id));
-        } else {
-            setActiveOptions([...activeOptions, id]);
-        }
-    };
+    useEffect(() => {
+        // Fetch the caregiver data from your API based on name
+        api.get(`/caregiver?name=${fullname}`)
+            .then((response) => {
+                console.log("API Response:", response.data);
+                setCaregiverData(response.data);
+            })
+            .catch((error) => console.error(error));
+    }, [fullname]); // Dependency on fullname
+    
+    console.log("Caregiver Data:", caregiverData);
+    
 
-    return(
+    if (!caregiverData || !caregiverData.caregiver) {
+        return <div>Loading...</div>; // Show loading state until data is fetched
+    }
+
+    // Destructure the caregiverData object to simplify access
+    const {
+        caregiver_name: caregiverName,
+        title: caregiverTitle,
+        rating,
+        reviews,
+        total_patients: totalPatients,
+        year_experience: yearsExperience,
+        about_me: aboutMe,
+        services_offered: servicesOffered,
+        image // Assuming this property exists for the caregiver's image
+    } = caregiverData.caregiver;
+
+    return (
         <>
             <Navbar />
             <div className="caregiver-profile">
                 <div className="caregiver-profile-1">
                     <div className='caregiverProfile-image-container'>
-                        <img className="caregiverProfiler-image"></img>
+                        {/* Assuming caregiverData has an image URL property */}
+                        <img className="caregiverProfiler-image" src={image} alt="Caregiver Profile" />
                     </div>
                 
                     <div className="caregiver-name">
-                        <p className='giver-name'>{caregivers[0].name}</p>
-                        <p className='giver-title'>{caregivers[0].title}</p>
+                        <p className='giver-name'>{caregiverName}</p>
+                        <p className='giver-title'>{caregiverTitle && caregiverTitle.length > 0 ? caregiverTitle[0] : 'No Title'}</p>
                         <div>
-                            <FaStar /> <span>{`${caregivers[0].rating} / 5 (${caregivers[0].review} reviews)`}</span>
+                            <FaStar /> <span>{`${rating} / 5 (${reviews} reviews)`}</span>
                             <br/>
                         </div>
                     </div>
@@ -54,7 +68,7 @@ function CaregiverProfile() {
                             <FaUser className="profile-2-icon" />
                         </div>
                     
-                        <p>{caregivers[0].total_patients}+</p>
+                        <p>{totalPatients}+</p>
                         <p>Patients</p>
                     </div>
 
@@ -63,7 +77,7 @@ function CaregiverProfile() {
                             <FaCalendarCheck className="profile-2-icon"/>
                         </div>
                     
-                        <p>{caregivers[0].year_experience}+</p>
+                        <p>{yearsExperience}+</p>
                         <p>Years</p>
                     </div>
 
@@ -72,7 +86,7 @@ function CaregiverProfile() {
                             <FaStar className="profile-2-icon"/> 
                         </div>
                             
-                        <p>{caregivers[0].rating}</p>
+                        <p>{rating}</p>
                         <p>Rating</p>
                     </div>
 
@@ -81,26 +95,22 @@ function CaregiverProfile() {
                             <RiMessage2Fill className="profile-2-icon"/> 
                         </div>
                     
-                        <p>{caregivers[0].review}+</p>
+                        <p>{reviews}+</p>
                         <p>Reviews</p>
                     </div>  
                 </div>
                 
                 <div className="caregiver-profile-3">
                     <h3>About me</h3>
-                    <p>{caregivers[0].about_me}</p>
+                    <p>{aboutMe}</p>
                 </div>
 
                 <div className="caregiver-profile-4">
                     <h3>Services Offered</h3>
-
                     <div className="service-list">
-                        <p className={activeOptions.includes('option1') ? 'active' : ''} onClick={() => handleClick('option1')}>Perconal Care Assistance</p>
-                        <p className={activeOptions.includes('option2') ? 'active' : ''} onClick={() => handleClick('option2')}>Mobility Aid</p>
-                        <p className={activeOptions.includes('option3') ? 'active' : ''} onClick={() => handleClick('option3')}>Errands</p>
-                        <p className={activeOptions.includes('option4') ? 'active' : ''} onClick={() => handleClick('option4')}>Medication Management</p>
-                        <p className={activeOptions.includes('option5') ? 'active' : ''} onClick={() => handleClick('option5')}>Catheter Care</p>
-                        <p className={activeOptions.includes('option6') ? 'active' : ''} onClick={() => handleClick('option6')}>Emotional Support</p>
+                        {servicesOffered.map((service, index) => (
+                            <p key={index}>{service}</p>
+                        ))}
                     </div>
                 </div>
 
@@ -109,7 +119,7 @@ function CaregiverProfile() {
                 </div>
             </div>
         </>
-    )
+    );
 }
 
 export default CaregiverProfile;

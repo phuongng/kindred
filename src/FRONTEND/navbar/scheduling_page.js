@@ -74,6 +74,11 @@ function Scheduling() {
 			</div>
 			
 		</div>
+
+
+			<div className="button-container">
+			<button className="schedule-button"><a href="/caregiver">Check available caregivers</a></button>
+			</div>
 	</div>
 	
 	</>

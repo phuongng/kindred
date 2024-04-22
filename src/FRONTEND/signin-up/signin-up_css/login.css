@@ -134,3 +134,39 @@
     border-radius: 50%;
     padding: 7px;
 }
+
+.toggle-password{
+    border: none;
+    background: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.password-input {
+    position: relative;
+  }
+  
+  .password-input input {
+    padding-right: 40px; /* Space for the toggle button */
+  }
+  
+  .password-input .toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 70%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 5px; /* Add padding to the button for better clickability */
+  }
+  
+  /* Style for the eye icon */
+  .password-input .toggle-password svg {
+    width: 20px;
+    height: 20px;
+  }
+  

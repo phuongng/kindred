@@ -1,16 +1,23 @@
+p{
+    color: black;
+}
+
 .caregiver-profile{
     height: 100%;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
     padding-bottom: 40px;
-    background-color: #F7F9FB;
+    /* background-color: #F7F9FB; */
+    background-color: #687864;
     
 }
 
 .caregiver-profile h3, p{
     margin: 0;
+    
 }
+
 .caregiver-profile-1{
     display: grid;
     grid-template-columns: 1fr 2fr;

@@ -47,8 +47,8 @@ function User_dashboard() {
       </div>
 
       <div className='edit-account-button'>
-        <button className='medium-button'>Edit Care Preferences</button>
-        <button className='medium-button'>Edit Booking </button>
+        <button className='medium-button'><a href="/home">Edit Care Preferences  </a></button>
+        <button className='medium-button'><a href="/booking">Edit Booking  </a></button>
       </div>
 
       <div className='addtional-question'>

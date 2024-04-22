@@ -39,7 +39,7 @@ function App() {
           
           {/* Subpage routes */}
           <Route path="/booking" element={<Booking />} />
-          <Route path="/caregiver-profile" element={<CaregiverProfile />} />
+          <Route path="/caregiver-profile/:fullname" element={<CaregiverProfile />} />
           <Route path="/confirmation" element={<Confirmation />} />
         </Routes>
       </Router>

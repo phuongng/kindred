@@ -29,7 +29,7 @@ const Navbar = () => {
             <RiMessage2Line className="menu-icon home-icon"/>
             </NavLink>
 
-            <NavLink to="/user">
+            <NavLink to="/user-dashboard">
                 <FaRegUser className="menu-icon"/>
             </NavLink>
         </div>
