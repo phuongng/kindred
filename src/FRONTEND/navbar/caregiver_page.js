@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api from '../../api.js';
 import "./navbar_css/caregiver.css";
 import Navbar from "../components/navbar";
 import { MdNotificationsNone } from "react-icons/md";
@@ -14,7 +14,7 @@ function Caregiver() {
 
   useEffect(() => {
     // Fetch the caregivers from your API
-    axios.get("http://localhost:5000/api/caregiver")
+    api.get("/caregiver")
       .then(response => setCaregivers(response.data))
       .catch(error => console.error(error));
   }, []);
