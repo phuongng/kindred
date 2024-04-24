@@ -11,22 +11,38 @@ import { useParams } from 'react-router-dom';
 function CaregiverProfile() {
     const { fullname } = useParams();
     const [caregiverData, setCaregiverData] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
+        setLoading(true);
+        setError(null);
         // Fetch the caregiver data from your API based on name
         api.get(`/caregiver?name=${fullname}`)
             .then((response) => {
                 console.log("API Response:", response.data);
                 setCaregiverData(response.data);
             })
-            .catch((error) => console.error(error));
+            .catch((error) => {
+                console.error('API Error:', error);
+                setError(error);
+                setLoading(false);
+            });
     }, [fullname]); // Dependency on fullname
-    
+
+    console.log("Search:", fullname);
     console.log("Caregiver Data:", caregiverData);
     
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return <div>Error loading data!</div>;
+    }
 
     if (!caregiverData || !caregiverData.caregiver) {
-        return <div>Loading...</div>; // Show loading state until data is fetched
+        return <div>No data found.</div>;
     }
 
     // Destructure the caregiverData object to simplify access
