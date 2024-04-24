@@ -23,12 +23,13 @@ const Client = require("./models/client");
 /* Sample API call setup, uses mongoose model schema */
 // GET
 app.get("/api/caregiver", async (req, res) => {
-  const { name } = req.query; // Extract name from query parameters
+  try {
+    const { name } = req.query; // Extract name from query parameters
     if (name) {
       // If a name is provided, search for a specific caregiver
-      const caregiver = await Caregiver.findOne({ 'caregiver.caregiver_name': fullname });
+      const caregiver = await Caregiver.findOne({ 'caregiver.caregiver_name': name });
       if (!caregiver) {
-        return res.status(404).send("Caregiver not found");
+        return res.status(404).json({ error: "Caregiver not found" });
       }
       res.json(caregiver);
     } else {
@@ -36,6 +37,10 @@ app.get("/api/caregiver", async (req, res) => {
       const caregivers = await Caregiver.find();
       res.json(caregivers);
     }
+  } catch (error) {
+    console.error('API error:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
 });
 app.get("/api/client", async (req, res) => {
   try {
