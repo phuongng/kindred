@@ -27,7 +27,7 @@ app.get("/api/caregiver", async (req, res) => {
     const { name } = req.query; // Extract name from query parameters
     if (name) {
       // If a name is provided, search for a specific caregiver
-      const caregiver = await Caregiver.findOne({ 'caregiver.caregiver_name': name });
+      const caregiver = await Caregiver.findOne({ 'caregiver.fullname': name });
       if (!caregiver) {
         return res.status(404).json({ error: "Caregiver not found" });
       }
