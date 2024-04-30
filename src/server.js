@@ -1,6 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require('cors');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -69,11 +72,16 @@ app.get("/api/appointment", async (req, res) => {
     res.status(500).send("Server Error");
   }
 });
+app.get("/api/client/login", authenticateToken, async(req, res) => {
+  // needs fixing
+})
 
 // POST
 app.post('/api/caregiver/new', async (req, res) => {
   try {
     const newCaregiver = new Caregiver(req.body);
+    const hashedPassword = await bcrypt.hash(newCaregiver.login.password, 10);
+    newCaregiver.login.password = hashedPassword; // replace plain text password with hashed password
     await newCaregiver.save();
 
     res.status(201).json(newCaregiver);
@@ -110,6 +118,23 @@ app.post('/api/appointment/new', async (req, res) => {
     res.status(201).json(newAppointment);
   } catch (error) {
     res.status(500).json({ error: error.message });
+  }
+});
+app.post('/api/client/login', async (req, res) => {
+  try {
+    const client = await Client.findOne({ 'login.username': req.body.username });
+    if (client == null) {
+      return res.status(400).send('Cannot find user');
+    }
+    if (await bcrypt.compare(req.body.password, client.login.password)) {
+      const accessToken = jwt.sign({ name: client.login.username }, process.env.ACCESS_TOKEN_SECRET);
+      res.json({ accessToken: accessToken });
+      res.status(200).json({ message: 'Login successful' });
+    } else {
+      res.status(404).json({message:'Wrong Password'});
+    }
+  } catch {
+    res.status(500).json({ error: 'Internal server error' });
   }
 });
 
@@ -247,3 +272,16 @@ app.put('/api/caregiver/update/:id', async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
+
+//Authenticate Token
+function authenticateToken(req,res,next){
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
+  if(token == null) return res.sendStatus(401);
+
+  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+    if(err) return res.sendStatus(401);
+    req.user = user;
+    next();
+  })
+}
