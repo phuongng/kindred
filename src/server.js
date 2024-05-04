@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const cors = require('cors');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const nodemailer = require('nodemailer');
 require('dotenv').config();
 
 const app = express();
@@ -15,13 +16,25 @@ app.use(express.json());
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 mongoose.connect("mongodb+srv://cosc617:admin@kindredapp.s34qhh0.mongodb.net/kindred", { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log("MongoDB connected"))
-    .catch(err => console.log("MongoDB connection error: ", err));
+  .then(() => console.log("MongoDB connected"))
+  .catch(err => console.log("MongoDB connection error: ", err));
 
 const Caregiver = require("./models/caregiver"); // Create the Caregiver model
 const Appointment = require("./models/appointment");
 const Review = require("./models/review");
 const Client = require("./models/client");
+
+// Nodemailer for Appointments
+let transporter = nodemailer.createTransport({
+  host: 'smtp.gmail.com',
+  port: 465,
+  secure: true,
+  auth: {
+    user: 'phenxejs@gmail.com',
+    pass: 'ffob dvfb imfn odiz'
+  }
+});
+
 
 /* Sample API call setup, uses mongoose model schema */
 // GET
@@ -72,9 +85,6 @@ app.get("/api/appointment", async (req, res) => {
     res.status(500).send("Server Error");
   }
 });
-app.get("/api/client/login", authenticateToken, async(req, res) => {
-  // needs fixing
-})
 
 // POST
 app.post('/api/caregiver/new', async (req, res) => {
@@ -113,7 +123,40 @@ app.post('/api/appointment/new', async (req, res) => {
   try {
     const newAppointment = new Appointment(req.body);
 
+    const client = await Client.findById(newAppointment.clientID);
+
+    const caregiver = await Caregiver.findById(newAppointment.caregiverID);
+
+    if (!client || !caregiver) {
+      return res.status(404).json({ error: 'Client or Caregiver not found' });
+    }
+
     await newAppointment.save();
+
+    function html(patientFirstName, patientLastName, fullname, dateTime, serviceNeeded) {
+      return `
+        <h1>Appointment Confirmation</h1>
+        <p>Patient Name: ${patientFirstName} ${patientLastName}</p>
+        <p>Caregiver Name: ${fullname}</p>
+        <p>Appointment Date and Time: ${dateTime}</p>
+        <p>Service Needed: ${serviceNeeded}</p>
+      `;
+    }
+
+    const mailOptions = {
+      from: 'phenxejs@gmail.com', // throwaway email
+      to: client.personalInfo.email,
+      subject: `Kindred Appointment Confirmation on ${newAppointment.dateTime}`,
+      text: html(client.personalInfo.patientFirstName,
+        client.personalInfo.patientLastName,
+        caregiver.fullName,
+        newAppointment.dateTime,
+        newAppointment.serviceNeeded)
+    };
+
+    transporter.sendMail(mailOptions);
+
+    console.log('Appointment confirmation email sent!');
 
     res.status(201).json(newAppointment);
   } catch (error) {
@@ -124,16 +167,15 @@ app.post('/api/client/login', async (req, res) => {
   try {
     const client = await Client.findOne({ 'login.username': req.body.username });
     if (client == null) {
-      return res.status(400).send('Cannot find user');
+      return res.status(400).json({ message: 'Client not found' });
     }
     if (await bcrypt.compare(req.body.password, client.login.password)) {
       const accessToken = jwt.sign({ name: client.login.username }, process.env.ACCESS_TOKEN_SECRET);
-      res.json({ accessToken: accessToken });
-      res.status(200).json({ message: 'Login successful' });
+      res.status(200).json({ accessToken: accessToken, message: 'Login successful' });
     } else {
-      res.status(404).json({message:'Wrong Password'});
+      res.status(401).json({ message: 'Wrong Password' });
     }
-  } catch {
+  } catch (error) {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
@@ -177,6 +219,7 @@ app.delete('/api/appointment/delete/:id', async (req, res) => {
 
   try {
     const deletedAppointment = await Appointment.findByIdAndDelete(appointmentId);
+
     if (!deletedAppointment) {
       return res.status(404).json({ message: 'Appointment not found' });
     }
@@ -274,13 +317,13 @@ app.put('/api/caregiver/update/:id', async (req, res) => {
 });
 
 //Authenticate Token
-function authenticateToken(req,res,next){
+function authenticateToken(req, res, next) {
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1];
-  if(token == null) return res.sendStatus(401);
+  if (token == null) return res.sendStatus(401);
 
   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
-    if(err) return res.sendStatus(401);
+    if (err) return res.sendStatus(401);
     req.user = user;
     next();
   })
